@@ -1,55 +1,104 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap(int *x, int *y)
+typedef struct Heap
+{
+    int *arr;
+    int heapsize;
+}Heap;
+
+Heap* build_heap(int* nums, int heapsize);
+int heap_push(Heap* heap, int item);
+void heapify(Heap* heap, int i);
+int heap_pop(Heap* heap);
+void swap(int* a, int* b);
+
+
+void swap(int* a, int* b)
 {
     int tmp;
-    tmp = *x;
-    *x = *y;
-    *y = tmp;
+    *a = tmp;
+    *a = *b;
+    *b = tmp;
 }
 
-void heapify(int arr[], int heapsize, int i)
+void heapify(Heap* heap, int i)
 {
     int largest = i;
-    int left = 2*i+1;
-    int right = 2*i+2;
 
-    if (left < heapsize && arr[largest] < arr[left])
-        largest = left;
+    if ((2*i+1) < heap->heapsize && heap->arr[2*i+1] > heap->arr[i])
+        largest = 2*i+1;
 
-    if (right < heapsize && arr[largest] < arr[right])
-        largest = right;
+    if ((2*i+2) < heap->heapsize && heap->arr[2*i+2] > heap->arr[i])
+        largest = 2*i+2;
 
     if (largest != i) {
-        swap(&arr[largest], &arr[i]);
-        heapify(arr, heapsize, largest);
+        swap(&heap->arr[largest], &heap->arr[i]);
+        heapify(heap, largest);
     }
 }
 
-void heap(int arr[], int n)
+Heap* build_heap(int* arr, int heapsize)
 {
-    for (int i=n/2-1; i>=0; i--)
-        heapify(arr, n, i);
+    int i = 0;
+    int n = heapsize/2 - 1;
 
-    for (int i = n-1; i>=0; i--) {
-        swap(&arr[i], &arr[0]);
-        heapify(arr, i, 0);
+    Heap *heap = (Heap *)malloc(sizeof(Heap));
+    if (!heap) {
+        fprintf(stderr, "heap allocated failed!");
+        return NULL;
     }
+
+    heap->heapsize = heapsize;
+    heap->arr = (int *)malloc(heap->heapsize * sizeof(int));
+    if (!heap->arr) {
+        fprintf(stderr, "arr allocated failed!\n");
+        free(heap);
+        return NULL;
+    }
+    for (i=0; i<heapsize; i++)
+        heap->arr[i] = arr[i];
+
+    for (int i=n; i<heapsize; i++)
+        heapify(heap, i);
 }
 
-void printArray(int arr[], int size) {
-    int i;
-    for (i = 0; i < size; i++)
-        printf("%d ", arr[i]);
-    printf("\n");
-}
+int heap_push(Heap* heap, int item)
+{
+    int i = heap->heapsize;
 
-int main() {
-    int arr[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    heap(arr, n);
-    printf("Sorted array: \n");
-    printArray(arr, n);
+    heap->arr = realloc(heap->arr, (heap->heapsize+1) * sizeof(int));
+    if (!heap->arr) {
+        fprintf(stderr, "realloctating for arr failed!\n");
+        return 1;
+    }
+    heap->arr[heap->heapsize] = item;
+    heap->heapsize++;
+
+    while (i>0 && heap->arr[i] > heap->arr[(i-1)/2]) {
+        swap(&heap->arr[i], &heap->arr[(i-1)/2]);
+        i = (i-1)/2;
+    }
+
     return 0;
 }
+
+int heap_pop(Heap* heap)
+{
+    int max_item = 0;
+    if (heap->heapsize == 0)
+        return NULL;
+    max_item = heap->arr[heap->heapsize-1];
+    swap(&heap->arr[0], &heap->arr[heap->heapsize-1]);
+    heap->heapsize--;
+    heapify(heap, 0);
+
+    return max_item;
+}
+
+void main()
+{
+	int arr[9] = {1,2,3,4,5,6,7,8,9};
+	Heap* heap = build_heap(arr, 9);
+}
+
