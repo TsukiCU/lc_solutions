@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -22,3 +23,12 @@ public:
         return res;
     }
 };
+
+int main()
+{
+    Solution s;
+    vector<string> res = s.generateParenthesis(3);
+    for (const auto& combination : res) {
+        cout << combination << endl;
+    }
+}
