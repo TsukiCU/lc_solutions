@@ -1,0 +1,14 @@
+This is the track of each day. Staring at Mar 25, 2024.
+
+LeetCode Daily Practice Log
+===========================
+
+Date: [2024-03-25]
+Total Problems Solved: 2
+
+Difficulty Breakdown:
+- Easy: 1
+- Medium: 1
+- Hard: 0
+
+Note: No special notes.
