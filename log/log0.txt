@@ -1,0 +1,28 @@
+LeetCode Daily Practice Log
+===========================
+
+Date: [2024-03-25]
+Total Problems Solved: 4
+
+Difficulty Breakdown:
+- Easy: 2
+- Medium: 2
+- Hard: 0
+
+Note:
+<54> Spiral Matrix
+Need to change my thinking pattern. MUST BE REVIEWED AFTER A WHILE.
+
+======================================================
+
+Date: [2024-03-26]
+Total Problems Solved: 3
+
+Difficulty Breakdown:
+- Easy: 1
+- Medium: 2
+- Hard: 0
+
+Note:
+<134> Gas Station.
+The testing examples are obnoxious. However the method behind it is valuable.
