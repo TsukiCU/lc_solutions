@@ -26,3 +26,15 @@ Difficulty Breakdown:
 Note:
 <134> Gas Station.
 The testing examples are obnoxious. However the method behind it is valuable.
+
+======================================================
+
+Date: [2024-03-27]
+Total Problems Solved: 2
+
+Difficulty Breakdown: 3
+- Easy: 1
+- Medium: 2
+- Hard: 0
+
+Note:
