@@ -38,3 +38,39 @@ Difficulty Breakdown: 3
 - Hard: 0
 
 Note:
+
+======================================================
+
+Date: [2024-03-28]
+Total Problems Solved: 2
+
+Difficulty Breakdown: 3
+- Easy: 1
+- Medium: 0
+- Hard: 0
+
+Note: The prefix sum does not necessarily be "SUM" !
+
+======================================================
+
+Date: [2024-03-29]
+Total Problems Solved: 0
+
+Difficulty Breakdown: 0
+- Easy: 0
+- Medium: 0
+- Hard: 0
+
+Note: 有懒狗家人们
+
+======================================================
+
+Date: [2024-03-30]
+Total Problems Solved: 3
+
+Difficulty Breakdown: 6
+- Easy: 1
+- Medium: 5
+- Hard: 0
+
+Note: 0-1 backpack. Did a lot of dp today.
